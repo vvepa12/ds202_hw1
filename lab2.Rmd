@@ -1,0 +1,58 @@
+---
+title: "ds202_hw2"
+author: "Varun Vepa"
+date: "9/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco) 
+```
+```{r}
+boxplot(choco$Rating ~ choco$Cocoa_Percent)
+hist(choco$Rating)
+hist(choco$Cocoa_Percent)
+#1. The distribution of scores is bimodal, with two peaks existing when looking at ratings. The amount of ratings only begins to go up near 2.5 on a 4 point scale, meaning most scores are relatively high.It is important to mention, however, when looking at the boxplot comparing Rating and Cocoa Percent, that there are a fair amount of outliers, especially in the 64-74% area. This shows that some people don't like chocolate with a lower cocoa content, but people tend to like a chocolate less once its cocoa percentage starts getting into the upper 80's.
+
+```
+```{r}
+H <- choco$Date
+counts <- table(H)
+barplot(counts)
+#2. The amount of ratings is lowest in 2006 and goes up until 2015. 2017 has a low amount of ratings, and 2020 has the least amount of ratings. 2015 has the most amount of ratings.
+```
+```{r}
+mean(choco$Rating)
+mean(choco$Cocoa_Percent)
+H <- choco$Cocoa_Percent
+counts <- table(H)
+barplot(counts)
+#3. As shown in the barplot below and the graphical summaries for question 1, the data shows that the sweet spot for chocolate is between 70 and 80% cocoa. The mean for cocoa percent eaten is also 71.6%.
+```
+```{r}
+c <- choco$Characteristics4
+counts <- table(c)
+barplot(counts)
+d <- choco$Characteristics1
+count1 <- table(d)
+barplot(count1)
+e<- choco$Characteristics2
+count2<- table(e)
+barplot(count2)
+f<- choco$Characteristics3
+count2<- table(f)
+barplot(count2)
+#3. As shown by the graphs, the most favorable traits for Characteristics1 are carrots, klingy, plums, short, and tart. There were a fair amount of chocolates being said to have a tart or mild tart taste, and many chocolates had rum or cinnamon tastes as well.
+```
+```{r}
+#My teammate never responded  to emails or texts, but the analyses I would like to complete are whether location affects rating, and how the specific bean origin plays into the cocoa percent.
+c <- choco$Rating
+hist(c)
+boxplot(choco$Rating ~ choco$Location)
+#There are clear differences in ratings between countries. This makes sense because different countries have different standards for their chocolate. For example, Hershey's chocolate from America can taste terrible to someone from Europe. While cocoa is a standard ingredient, the other ones, such as cocoa butter and sugar, can have subtle differences due to the region these ingredients are from.
+```
